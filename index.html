@@ -2,33 +2,49 @@
 <html>
 
 <head>
-    <title>Trivia</title>
+    <title>Olympic Trivia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Time for Trivia!</h1>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <button id="start"></button>
-    <div id="timer"></div>
+    <!-- <div class="container"> -->
+
+    <div class="container clearfix">
+        <img class="header-img1" src="assets/images/olympic-games.png">
+        <h1>Olympic Trivia!!</h1>
+        <img class="header-img2" src="assets/images/olympic-games.png">
+    </div>
 
 
-    <div id="questions"></div>
-    <div id="options"></div>
+    <div class="container game">
+        <button id="start"></button>
+        <div class="game" id="timer"></div>
+
+        <!-- question screen -->
+        <div class="game" id="questions"></div>
+        <div class="game" id="options"></div>
+
+
+        <!-- results screen -->
+        <div class="game" id="result"></div>
+        <div class="game" id="correct"></div>
+        <img class="game" id="image"></img>
+
+
+        <!-- game over screen -->
+        <div class="game" id="game-over"></div>
+        <div class="game" id="number-correct"></div>
+        <div class="game" id="number-incorrect"></div>
+        <div class="game" id="number-unanswered"></div>
+        <div class="game" id="play-again"></div>
+    </div>
 
 
 
-    <div id="result"></div>
-    <div id="correct"></div>
-    <img id="gif"></img>
-
-
-
-    <div id="game-over"></div>
-    <div id="number-correct"></div>
-    <div id="number-incorrect"></div>
-    <div id="number-unanswered"></div>
-    <div id="play-again"></div>
+    <!-- </div> -->
 
 
 
