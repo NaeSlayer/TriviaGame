@@ -193,13 +193,14 @@ $(document).ready(function () {
         }
         else if (answer === "Time's Up") {
             $("#result").text("You are out of time!!!!");
-            incorrect++
+
+            unanswered++
         }
         else {
             (answer === "incorrect");
             $("#result").text("Incorrect");
             $("#result").css("color", "red");
-            unanswered++;
+            incorrect++;
         }
         index++;
         setTimeout(renderQuestion, 3000);
@@ -229,6 +230,7 @@ $(document).ready(function () {
         if (timeLeft === 0) {
             clearTimeout(timerId);
             loadAnswerPage("Time's Up");
+            $("#correct").append("The correct answer is " + questionArray[index].answer[1]);
         } else {
             $("#timer").text(timeLeft + " seconds remaining");
             timeLeft--;

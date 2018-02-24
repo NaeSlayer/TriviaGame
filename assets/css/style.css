@@ -56,13 +56,14 @@ body {
     clear: both;
     display: table;
 }
-#start,
-#play-again {
+
+.btn {
     background: rgb(187, 188, 189);
     box-shadow: 5px 5px 4px 0px;
+    width: 400px;
 }
-#start:hover, 
-#play-again {
+
+btn:hover,  {
     background: rgb(145, 148, 148);
     
 }
