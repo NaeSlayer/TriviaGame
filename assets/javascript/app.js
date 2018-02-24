@@ -7,14 +7,14 @@ $(document).ready(function () {
                 "answer": [1, "776 BC"],
                 "question": "When were the first ancient Olympic Games held?",
                 "options": ["980 BC", "776 BC", "33 AD", "200 BC"],
-                "image": "../images/acropolis.jpg",
+                "image": "assets/images/acropolis.jpg",
             },
             // question 2
             {
                 "answer": [2, "Zeus"],
                 "question": "The ancient Olympic Games were a festival celebrating which god?",
                 "options": ["Athena", "Apollo", "Zeus", "Achilles"],
-                "image": "../images/zeus.jpg",
+                "image": "assets/images/zeus.jpg",
 
             },
             // question 3
@@ -22,7 +22,7 @@ $(document).ready(function () {
                 "answer": [3, "1896"],
                 "question": "When were the first modern-day Olympics held?",
                 "options": ["1784", "1688", "1910", "1896"],
-                "image": "../images/acropolis.jpg",
+                "image": "assets/images/acropolis.jpg",
 
             },
             // question 4
@@ -30,7 +30,7 @@ $(document).ready(function () {
                 "answer": [1, "1924"],
                 "question": "When were the first Winter Olympics held?",
                 "options": ["1910", "1924", "1896", "1940"],
-                "image": "../images/winter.jpg",
+                "image": "assets/images/winter.jpg",
 
             },
             // question 5
@@ -38,7 +38,7 @@ $(document).ready(function () {
                 "answer": [2, "Norway"],
                 "question": "Which country has won the most medals at the Winter Olympics?",
                 "options": ["United States", "Russia", "Norway", "China"],
-                "image": "../images/bobsled.jpg",
+                "image": "assets/images/bobsled.jpg",
 
             },
             // question 6
@@ -46,7 +46,7 @@ $(document).ready(function () {
                 "answer": [0, "United States"],
                 "question": "Which country has won the most medals at the Summer Olympics?",
                 "options": ["United States", "Brazil", "France", "Spain"],
-                "image": "../images/medals.jpg",
+                "image": "assets/images/medals.jpg",
 
             },
             // question 7
@@ -54,7 +54,7 @@ $(document).ready(function () {
                 "answer": [2, "8"],
                 "question": "How many times has the United States hosted the Olympics?",
                 "options": ["4", "9", "8", "6"],
-                "image": "../images/olympic-stairs.jpg",
+                "image": "assets/images/olympic-stairs.jpg",
 
             },
             // question 8
@@ -62,7 +62,7 @@ $(document).ready(function () {
                 "answer": [2, "1980"],
                 "question": "Which year did the United States boycott the Olympics?",
                 "options": ["1964", "1940", "1980", "1930"],
-                "image": "../images/sculpture.jpg",
+                "image": "assets/images/sculpture.jpg",
 
             },
             // question 9
@@ -70,7 +70,7 @@ $(document).ready(function () {
                 "answer": [2, "Michael Phelps"],
                 "question": "Who holds the most Olympic medals?",
                 "options": ["Shawn White", "Larisa Latynina", "Michael Phelps", "Jenny Thompson"],
-                "image": "../images/michael-phelps.jpg",
+                "image": "assets/images/michael-phelps.jpg",
 
             },
             // question 10
@@ -78,7 +78,7 @@ $(document).ready(function () {
                 "answer": [1, "Middle East"],
                 "question": "Each of the Olympic rings represents a region of the world. Which of the following is not a region represented by an Olympic ring?",
                 "options": ["Africa", "Middle East", "Oceana", "Europe"],
-                "image": "../images/ground.jpg",
+                "image": "assets/images/ground.jpg",
 
             },
         ]
@@ -98,6 +98,7 @@ $(document).ready(function () {
     var time = document.getElementById("timer");
 
     function initializeGame() {
+        $("#play-again").hide();
         $("#start").text("Click here to begin");
         index = 0;
     }
@@ -106,6 +107,8 @@ $(document).ready(function () {
 
     function startNewGame() {
         index = 0;
+        $("#play-again").hide();
+
         renderQuestion();
     }
 
@@ -115,7 +118,10 @@ $(document).ready(function () {
             clearTimeout(timerId);
             timeLeft = 30;
             timerId = setInterval(countdown, 1000);
+
             $("#start").hide();
+            // $(".question").show();
+
             $("#game-over").hide();
             $("#number-correct").hide();
             $("#number-incorrect").hide();
@@ -129,7 +135,7 @@ $(document).ready(function () {
             $("#options").empty();
             $("#result").empty();
             $("#correct").empty();
-            // $("#image").empty();
+            $("#image").empty();
             questions = $("<div>");
             questions.text(questionArray[index].question);
             $("#questions").append(questions);
@@ -169,18 +175,20 @@ $(document).ready(function () {
 
     function loadAnswerPage(answer) {
         var answerImage;
+        // $(".questions").hide();
         $("#questions").hide();
         $("#options").hide();
         $("#result").show();
         $("#correct").show();
         $("#image").show();
-        answerImage = $("<img>");
-        // answerImage.addclass("answer-image");
+        answerImage = $('<img class="answer-image">');
         answerImage.attr("src", questionArray[index].image);
+        $("#image").append(answerImage);
 
 
         if (answer === "correct") {
             $("#result").text("Correct");
+            $("#result").css("color", "green");
             correct++;
         }
         else if (answer === "Time's Up") {
@@ -190,6 +198,7 @@ $(document).ready(function () {
         else {
             (answer === "incorrect");
             $("#result").text("Incorrect");
+            $("#result").css("color", "red");
             unanswered++;
         }
         index++;
@@ -200,8 +209,10 @@ $(document).ready(function () {
     function gameOver() {
         $("#result").hide();
         $("#correct").hide();
+        $("#image").hide();
         $("#game-over").show();
-        $("#start").show();
+        // $(".game-over").show();
+        // $("#start").show();
         $("#number-correct").show();
         $("#number-incorrect").show();
         $("#number-unanswered").show();
@@ -210,6 +221,7 @@ $(document).ready(function () {
         $("#number-correct").append("Number of correct answers: " + correct);
         $("#number-incorrect").append("Number of incorrect answers: " + incorrect);
         $("#number-unanswered").append("Number of unanswered questions: " + unanswered);
+        $("#play-again").append("Click here to begin again!")
     }
 
 
@@ -223,9 +235,9 @@ $(document).ready(function () {
         }
     }
 
-    // renderQuestion();
+
     initializeGame();
-    // startNewGame();
+
 
     $("#start").on("click", function () {
         startNewGame();
